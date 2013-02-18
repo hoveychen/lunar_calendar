@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">LunarCalendar</string>
+    <string name="extension_title">Lunar Calendar extension</string>
+    <string name="extension_description">Displays a nice, friendly hello message.</string>
+    <string name="pref_name_title">Your name</string>
+    <string name="pref_name_default">John Smith</string>
+    <string name="title_settings">Example Extension Settings</string>
+</resources>
