@@ -15,39 +15,41 @@
 <resources>
 
     <!-- Apps -->
-    <string name="app_name">Dashclock Lunar Calendar</string>
-    <string name="extension_title">Lunar Calendar</string>
-    <string name="extension_description">Shows various lunar calendar information.</string>
-    <string name="title_settings">Lunar Calendat Setting</string>
-    <string name="click_url">http://www.google.com.tw/search?q=%1$s</string>
-    <string name="short_date_template">nl %1$s/%2$s</string>
+    <string name="app_name">Dashclock扩展-万年历</string>
+    <string name="extension_title">万年历</string>
+    <string name="extension_description">显示中国农历时辰。</string>
+    <string name="pref_status_visibility_title">显示缩略日期</string>
+    <string name="pref_status_visibility_summary">在时钟右侧显示当前节日、节气或日期</string>
+    <string name="title_settings">万年历设置</string>
+    <string name="click_url">http://www.google.com.hk/search?q=%1$s</string>
+    <string name="short_date_template">农历 %1$s月%2$s</string>
 
     <!-- Preference -->
-    <string name="pref_status_number_of_lines_title">Number of lines in status</string>
+    <string name="pref_status_number_of_lines_title">时钟右侧显示风格</string>
 
     <string-array name="pref_status_number_of_lines_options">
-        <item>Single line (Days)</item>
-        <item>Double line (Month/Days)</item>
+        <item>单行 (第几日)</item>
+        <item>双行 (月份和第几日)</item>
     </string-array>
     <string-array name="pref_status_number_of_lines_values" translatable="false">
         <item>1</item>
         <item>2</item>
     </string-array>
 
-    <string name="pref_number_format_title">Format of numbers</string>
+    <string name="pref_number_format_title">数字风格</string>
+    <string name="pref_number_format_default_value">t</string>
 
     <string-array name="pref_number_format_options">
-        <item>Digital Numbers</item>
-        <item>Traditional Chinese Numbers</item>
+        <item>纯数字</item>
+        <item>中文字符</item>
     </string-array>
-    <string name="pref_number_format_default_value">d</string>
     <string-array name="pref_number_format_values" translatable="false">
         <item>d</item>
         <item>t</item>
     </string-array>
 
     <!-- Words -->
-    <string name="leap">閏</string>
+    <string name="leap">闰</string>
     <string name="first_month">正</string>
     <string name="tenth">初十</string>
     <string name="twentieth">二十</string>
@@ -67,7 +69,7 @@
         <item>九</item>
         <item>十</item>
         <item>十一</item>
-        <item>臘</item>
+        <item>腊</item>
     </string-array>
     <string-array name="decade_number_array">
         <item>初</item>
@@ -88,8 +90,8 @@
     <!-- %9$s ancient hour -->
     <string name="status_single_template">%8$s</string>
     <string name="status_double_template">%2$s月\n%3$s</string>
-    <string name="expanded_title_template">農歷%2$s月%3$s %6$s%7$s</string>
-    <string name="expanded_body_template">%4$s(%5$s)%1$s年 %9$s時</string>
+    <string name="expanded_title_template">农历%2$s月%3$s %6$s%7$s</string>
+    <string name="expanded_body_template">%4$s(%5$s)%1$s年 %9$s时</string>
 
     <!-- String arrays -->
     <string-array name="gan_array">
@@ -106,7 +108,7 @@
     </string-array>
     <string-array name="zhi_array">
         <item>子</item>
-        <item>醜</item>
+        <item>丑</item>
         <item>寅</item>
         <item>卯</item>
         <item>辰</item>
@@ -123,32 +125,32 @@
         <item>牛</item>
         <item>虎</item>
         <item>兔</item>
-        <item>龍</item>
+        <item>龙</item>
         <item>蛇</item>
-        <item>馬</item>
+        <item>马</item>
         <item>羊</item>
         <item>猴</item>
-        <item>雞</item>
+        <item>鸡</item>
         <item>狗</item>
-        <item>豬</item>
+        <item>猪</item>
     </string-array>
     <string-array name="term_array">
         <item>小寒</item>
         <item>大寒</item>
         <item>立春</item>
         <item>雨水</item>
-        <item>驚蟄</item>
+        <item>惊蛰</item>
         <item>春分</item>
         <item>清明</item>
         <item>谷雨</item>
         <item>立夏</item>
-        <item>小滿</item>
-        <item>芒種</item>
+        <item>小满</item>
+        <item>芒种</item>
         <item>夏至</item>
         <item>小暑</item>
         <item>大暑</item>
         <item>立秋</item>
-        <item>處暑</item>
+        <item>处暑</item>
         <item>白露</item>
         <item>秋分</item>
         <item>寒露</item>
@@ -159,13 +161,13 @@
         <item>冬至</item>
     </string-array>
     <string-array name="holiday_array">
-        <item>春節</item>
+        <item>春节</item>
         <item>元宵</item>
         <item>端午</item>
         <item>七夕</item>
         <item>中秋</item>
-        <item>重陽</item>
-        <item>臘八</item>
+        <item>重阳</item>
+        <item>腊八</item>
         <item>除夕</item>
     </string-array>
 

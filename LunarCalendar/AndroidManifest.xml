@@ -41,11 +41,9 @@
             <meta-data
                 android:name="description"
                 android:value="@string/extension_description" />
-            <!--
-                 <meta-data
+            <meta-data
                 android:name="settingsActivity"
                 android:value=".LunarCalendarSettingsActivity" />
-            -->
         </service>
 
         <activity

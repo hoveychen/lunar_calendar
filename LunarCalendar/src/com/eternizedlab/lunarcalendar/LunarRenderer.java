@@ -16,14 +16,15 @@ package com.eternizedlab.lunarcalendar;
 import android.content.Context;
 
 public class LunarRenderer {
-  private Context context;
+  protected Context context;
 
   public LunarRenderer(Context context) {
     this.context = context;
   }
 
   public String getYear(int year) {
-    String[] unitNumbers = context.getResources().getStringArray(R.array.unit_number_array);
+    String[] unitNumbers = context.getResources().getStringArray(
+        R.array.unit_number_array);
     StringBuilder sb = new StringBuilder();
     while (year > 0) {
       sb.append(unitNumbers[year % 10]);
@@ -33,7 +34,8 @@ public class LunarRenderer {
   }
 
   public String getMonth(int month, boolean isLeapMonth) {
-    String[] unitNumbers = context.getResources().getStringArray(R.array.unit_number_array);
+    String[] unitNumbers = context.getResources().getStringArray(
+        R.array.unit_number_array);
     StringBuilder sb = new StringBuilder();
     if (isLeapMonth) {
       sb.append(context.getString(R.string.leap));
@@ -48,17 +50,19 @@ public class LunarRenderer {
 
   public String getDay(int day) {
     switch (day) {
-      case 10:
-        return context.getString(R.string.tenth);
-      case 20:
-        return context.getString(R.string.twentieth);
-      case 30:
-        return context.getString(R.string.thirtieth);
-      default:
-        String[] unitNumbers = context.getResources().getStringArray(R.array.unit_number_array);
-        String[] decadeNumbers = context.getResources().getStringArray(R.array.decade_number_array);
-        return new StringBuilder().append(decadeNumbers[day / 10])
-            .append(unitNumbers[day % 10]).toString();
+    case 10:
+      return context.getString(R.string.tenth);
+    case 20:
+      return context.getString(R.string.twentieth);
+    case 30:
+      return context.getString(R.string.thirtieth);
+    default:
+      String[] unitNumbers = context.getResources().getStringArray(
+          R.array.unit_number_array);
+      String[] decadeNumbers = context.getResources().getStringArray(
+          R.array.decade_number_array);
+      return new StringBuilder().append(decadeNumbers[day / 10])
+          .append(unitNumbers[day % 10]).toString();
     }
   }
 
@@ -78,11 +82,12 @@ public class LunarRenderer {
   }
 
   public String getTerm(int termIdx) {
-    return termIdx == -1 ? "" : context.getResources().getStringArray(R.array.term_array)[termIdx];
+    return termIdx == -1 ? "" : context.getResources().getStringArray(
+        R.array.term_array)[termIdx];
   }
 
   public String getHoliday(int holidayIdx) {
-    return holidayIdx == -1 ? ""
-        : context.getResources().getStringArray(R.array.holiday_array)[holidayIdx];
+    return holidayIdx == -1 ? "" : context.getResources().getStringArray(
+        R.array.holiday_array)[holidayIdx];
   }
 }

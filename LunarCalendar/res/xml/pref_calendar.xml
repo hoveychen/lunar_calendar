@@ -14,10 +14,21 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <CheckBoxPreference
-        android:defaultValue="true"
-        android:key="pref_status_visibility"
-        android:summary="@string/pref_status_visibility_summary"
-        android:title="@string/pref_status_visibility_title" />
+    <ListPreference
+        android:defaultValue="1"
+        android:entries="@array/pref_status_number_of_lines_options"
+        android:entryValues="@array/pref_status_number_of_lines_values"
+        android:key="pref_status_number_of_lines"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/pref_status_number_of_lines_title" />
+    <ListPreference
+        android:defaultValue="@string/pref_number_format_default_value"
+        android:entries="@array/pref_number_format_options"
+        android:entryValues="@array/pref_number_format_values"
+        android:key="pref_number_format"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/pref_number_format_title" />
 
 </PreferenceScreen>
