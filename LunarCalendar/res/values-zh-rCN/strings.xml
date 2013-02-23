@@ -18,8 +18,6 @@
     <string name="app_name">Dashclock扩展-万年历</string>
     <string name="extension_title">万年历</string>
     <string name="extension_description">显示中国农历时辰。</string>
-    <string name="pref_status_visibility_title">显示缩略日期</string>
-    <string name="pref_status_visibility_summary">在时钟右侧显示当前节日、节气或日期</string>
     <string name="title_settings">万年历设置</string>
     <string name="click_url">http://www.google.com.hk/search?q=%1$s</string>
     <string name="short_date_template">农历 %1$s月%2$s</string>
@@ -31,10 +29,6 @@
         <item>单行 (第几日)</item>
         <item>双行 (月份和第几日)</item>
     </string-array>
-    <string-array name="pref_status_number_of_lines_values" translatable="false">
-        <item>1</item>
-        <item>2</item>
-    </string-array>
 
     <string name="pref_number_format_title">数字风格</string>
     <string name="pref_number_format_default_value">t</string>
@@ -42,10 +36,6 @@
     <string-array name="pref_number_format_options">
         <item>纯数字</item>
         <item>中文字符</item>
-    </string-array>
-    <string-array name="pref_number_format_values" translatable="false">
-        <item>d</item>
-        <item>t</item>
     </string-array>
 
     <!-- Words -->
