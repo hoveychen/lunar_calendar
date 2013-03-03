@@ -67,6 +67,11 @@ public abstract class LunarRenderer {
     return getStringFromList(R.array.zhi_array, date.hourIdx);
   }
 
+  public String getNextSpecialDay(LunarDate date, int daysLeft) {
+    return context.getString(R.string.template_next_special, daysLeft,
+        getSpecialDay(date));
+  }
+
   protected abstract String getSingleLineStatus(LunarDate date);
 
   protected abstract String getDoubleLineStatus(LunarDate date);

@@ -249,8 +249,8 @@ public class LunarData {
 
   private final int[] lunarInfo;
 
-  public LunarData(Locale locale) {
-    if (Locale.KOREA.equals(locale)) {
+  public LunarData() {
+    if (Locale.KOREA.equals(Locale.getDefault())) {
       lunarInfo = KOREA_LUNAR_INFO;
     } else {
       lunarInfo = CHINA_LUNAR_INFO;

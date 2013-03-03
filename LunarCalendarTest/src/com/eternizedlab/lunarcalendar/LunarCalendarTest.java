@@ -10,13 +10,12 @@ import com.eternizedlab.lunarcalendar.LunarCalendar.LunarDate;
 public class LunarCalendarTest extends TestCase {
 
   private LunarCalendar calendar;
-  private LunarData data;
 
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    data = new LunarData(Locale.CHINA);
-    calendar = new LunarCalendar(data);
+    Locale.setDefault(Locale.CHINA);
+    calendar = new LunarCalendar();
   }
 
   class TestData {
@@ -48,6 +47,17 @@ public class LunarCalendarTest extends TestCase {
     for (TestData testData : testDatas) {
       assertEquals(testData.lunarDate,
           calendar.transformLunarDate(testData.calendar));
+    }
+  }
+
+  public void testNextDay() {
+    for (TestData testData : testDatas) {
+      testData.calendar.add(Calendar.DAY_OF_MONTH, 1);
+      LunarDate nextDay = calendar.transformLunarDate(testData.calendar);
+      testData.calendar.roll(Calendar.DAY_OF_MONTH, false);
+      assertEquals(nextDay,
+          calendar.nextDay(testData.lunarDate, testData.calendar));
+
     }
   }
 }

@@ -69,11 +69,7 @@ public class LunarCalendar {
 
   }
 
-  private LunarData data;
-
-  public LunarCalendar(LunarData lunarData) {
-    this.data = lunarData;
-  }
+  private LunarData data = new LunarData();
 
   private int getDaysSinceEpoch(Calendar calendar) {
     Calendar baseDate = Calendar.getInstance();
@@ -123,6 +119,37 @@ public class LunarCalendar {
     lunarDate.day = offset + 1;
     fillAdditionalInfo(lunarDate, calendar);
     return lunarDate;
+  }
+
+  public LunarDate nextDay(LunarDate lunarDate, Calendar calendar) {
+    LunarDate date = new LunarDate(lunarDate.year, lunarDate.month,
+        lunarDate.day, lunarDate.isLeapMonth);
+    Calendar tmpCal = Calendar.getInstance();
+    tmpCal.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+        calendar.get(Calendar.DAY_OF_MONTH),
+        calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE),
+        calendar.get(Calendar.SECOND));
+    tmpCal.add(Calendar.DAY_OF_MONTH, 1);
+    date.day++;
+    if (date.day > data.getDaysInMonth(date.year, date.isLeapMonth ? 0
+        : date.month)) {
+      date.day = 1;
+      if (!date.isLeapMonth && date.month == data.getLeapMonthIdx(date.year)) {
+        // The next month is leap month
+        date.isLeapMonth = true;
+      } else {
+        if (date.isLeapMonth) {
+          date.isLeapMonth = false;
+        }
+        date.month++;
+      }
+    }
+    if (date.month > 12) {
+      date.month = 1;
+      date.year++;
+    }
+    fillAdditionalInfo(date, tmpCal);
+    return date;
   }
 
   private void fillAdditionalInfo(LunarDate lunarDate, Calendar calendar) {

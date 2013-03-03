@@ -31,4 +31,10 @@
         android:positiveButtonText="@null"
         android:title="@string/pref_number_format_title" />
 
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="pref_next_special"
+        android:title="@string/pref_next_special_title" 
+        android:summary="@string/pref_next_special_summary"/>
+
 </PreferenceScreen>

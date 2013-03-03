@@ -36,6 +36,9 @@
         <item>中文字符</item>
     </string-array>
 
+    <string name="pref_next_special_title">下一个日子</string>
+    <string name="pref_next_special_summary">显示即将来临的下一个时节或节日</string>
+
     <!-- Traditional number format -->
     <string name="leap">闰</string>
     <string name="first_month">正</string>
@@ -76,6 +79,7 @@
     <string name="template_digital_status_double">%1$s月\n%2$d日</string>
     <string name="template_digital_expanded_title">农历纪元%1$d年%2$s月%3$d %4$s</string>
     <string name="template_digital_expanded_body">%1$s（%2$s）年，%3$s时</string>
+    <string name="template_next_special">，离%2$s还有%1$d天</string>
 
     <!-- String arrays -->
     <string-array name="gan_array">

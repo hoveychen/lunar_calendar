@@ -25,7 +25,8 @@ public class LunarDataTest extends TestCase {
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    data = new LunarData(Locale.CHINA);
+    Locale.setDefault(Locale.CHINA);
+    data = new LunarData();
   }
 
   public void testGetLeapMonthIdx() {

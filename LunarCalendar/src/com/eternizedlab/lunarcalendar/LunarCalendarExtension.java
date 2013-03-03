@@ -14,10 +14,10 @@
 package com.eternizedlab.lunarcalendar;
 
 import java.util.Calendar;
-import java.util.Locale;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.preference.PreferenceManager;
 
 import com.eternizedlab.lunarcalendar.LunarCalendar.LunarDate;
@@ -30,18 +30,16 @@ public class LunarCalendarExtension extends DashClockExtension {
   private TraditionalLunarRenderer traditionalRenderer = new TraditionalLunarRenderer(
       this);
   private DigitalLunarRenderer digitalRenderer = new DigitalLunarRenderer(this);
+  private LunarCalendar calendar = new LunarCalendar();
   private LunarRenderer renderer;
-  private LunarData data = new LunarData(Locale.getDefault());
-  private LunarCalendar calendar = new LunarCalendar(data);
 
   public static final String PREF_STATUS_NUMBER_OF_LINES = "pref_status_number_of_lines";
-  public static final String PREF_STATUS_NUMBER_FORMAT = "pref_number_format";
+  public static final String PREF_NUMBER_FORMAT = "pref_number_format";
+  public static final String PREF_NEXT_SPECIAL = "pref_next_special";
 
-  private void setupRenderer() {
-    // Get preference value.
-    SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+  private void setupRenderer(SharedPreferences sp) {
     String numStatusLines = sp.getString(PREF_STATUS_NUMBER_OF_LINES, "1");
-    String numberFormat = sp.getString(PREF_STATUS_NUMBER_FORMAT,
+    String numberFormat = sp.getString(PREF_NUMBER_FORMAT,
         getString(R.string.pref_number_format_default_value));
     renderer = "t".equals(numberFormat) ? traditionalRenderer : digitalRenderer;
     renderer.setNumStatusLine("1".equals(numStatusLines) ? 1 : 2);
@@ -49,22 +47,43 @@ public class LunarCalendarExtension extends DashClockExtension {
 
   @Override
   protected void onUpdateData(int reason) {
-    setupRenderer();
+    SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+    setupRenderer(sp);
+    String nextSpecialDayTitle = "";
+    if (sp.getBoolean(PREF_NEXT_SPECIAL, true)) {
+      Calendar cal = Calendar.getInstance();
+      cal.add(Calendar.DAY_OF_MONTH, 1);
+      LunarDate ld = calendar.transformLunarDate(cal);
+      int daysLeft = 1;
+      while (ld.holidayIdx == -1 && ld.termIdx == -1) {
+        daysLeft++;
+        ld = calendar.nextDay(ld, cal);
+        cal.add(Calendar.DAY_OF_MONTH, 1);
+      }
+      nextSpecialDayTitle = renderer.getNextSpecialDay(ld, daysLeft);
+    }
+
     LunarDate date = calendar.transformLunarDate(Calendar.getInstance());
 
     // Publish the extension data update.
-    publishUpdate(new ExtensionData().visible(true)
+    publishUpdate(new ExtensionData()
+        .visible(true)
         .icon(R.drawable.ic_extension_lunarcalendar)
         .status(renderer.getDisplayStatus(date))
         .expandedTitle(renderer.getDisplayExpandedTitle(date))
-        .expandedBody(renderer.getDisplayExpandedBody(date))
-        .clickIntent(getDefaultIntent(date)));
-
+        .expandedBody(
+            renderer.getDisplayExpandedBody(date) + nextSpecialDayTitle)
+        .clickIntent(getWebpageIntent()));
   }
 
-  private Intent getDefaultIntent(LunarDate lunarDate) {
+  private Intent getDefaultIntent() {
     return new Intent(Intent.makeMainSelectorActivity(Intent.ACTION_MAIN,
         Intent.CATEGORY_APP_CALENDAR)).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+  }
+
+  private Intent getWebpageIntent() {
+    return new Intent(Intent.ACTION_VIEW,
+        Uri.parse("http://www.baidu.com/s?wd=%E4%B8%87%E5%B9%B4%E5%8E%86"));
   }
 
   @Override
