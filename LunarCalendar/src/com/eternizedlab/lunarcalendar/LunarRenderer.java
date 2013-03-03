@@ -15,79 +15,64 @@ package com.eternizedlab.lunarcalendar;
 
 import android.content.Context;
 
-public class LunarRenderer {
+import com.eternizedlab.lunarcalendar.LunarCalendar.LunarDate;
+
+public abstract class LunarRenderer {
   protected Context context;
 
   public LunarRenderer(Context context) {
     this.context = context;
   }
 
-  public String getYear(int year) {
-    String[] unitNumbers = context.getResources().getStringArray(
-        R.array.unit_number_array);
-    StringBuilder sb = new StringBuilder();
-    while (year > 0) {
-      sb.append(unitNumbers[year % 10]);
-      year /= 10;
-    }
-    return sb.reverse().toString();
+  protected int numStatusLine = 1;
+
+  public void setNumStatusLine(int numStatusLine) {
+    this.numStatusLine = numStatusLine;
   }
 
-  public String getMonth(int month, boolean isLeapMonth) {
-    String[] unitNumbers = context.getResources().getStringArray(
-        R.array.unit_number_array);
-    StringBuilder sb = new StringBuilder();
-    if (isLeapMonth) {
-      sb.append(context.getString(R.string.leap));
-    }
-    if (month == 1) {
-      sb.append(context.getString(R.string.first_month));
+  public String getDisplayStatus(LunarDate date) {
+    return numStatusLine == 1 ? getSingleLineStatus(date)
+        : getDoubleLineStatus(date);
+  }
+
+  protected String getStringFromList(int arrayResId, int idx) {
+    String[] array = context.getResources().getStringArray(arrayResId);
+    if (idx < 0 || idx >= array.length) {
+      return "";
     } else {
-      sb.append(unitNumbers[month]);
-    }
-    return sb.toString();
-  }
-
-  public String getDay(int day) {
-    switch (day) {
-    case 10:
-      return context.getString(R.string.tenth);
-    case 20:
-      return context.getString(R.string.twentieth);
-    case 30:
-      return context.getString(R.string.thirtieth);
-    default:
-      String[] unitNumbers = context.getResources().getStringArray(
-          R.array.unit_number_array);
-      String[] decadeNumbers = context.getResources().getStringArray(
-          R.array.decade_number_array);
-      return new StringBuilder().append(decadeNumbers[day / 10])
-          .append(unitNumbers[day % 10]).toString();
+      return array[idx];
     }
   }
 
-  public String getAnimal(int animalIdx) {
-    return context.getResources().getStringArray(R.array.animal_array)[animalIdx];
+  protected String getGanZhiYear(LunarDate date) {
+    return getStringFromList(R.array.gan_array, date.ganIdx)
+        + getStringFromList(R.array.zhi_array, date.zhiIdx);
   }
 
-  public String getAnicentHour(int anicentHourIdx) {
-    return context.getResources().getStringArray(R.array.zhi_array)[anicentHourIdx];
+  protected String getZodiac(LunarDate date) {
+    return getStringFromList(R.array.animal_array, date.zodiacIdx);
   }
 
-  public String getGanZhi(int ganIdx, int zhiIdx) {
-    StringBuffer sb = new StringBuffer();
-    sb.append(context.getResources().getStringArray(R.array.gan_array)[ganIdx]);
-    sb.append(context.getResources().getStringArray(R.array.zhi_array)[zhiIdx]);
-    return sb.toString();
+  protected String getSpecialDay(LunarDate date) {
+    if (date.holidayIdx != -1) {
+      return getStringFromList(R.array.holiday_array, date.holidayIdx);
+    }
+    if (date.termIdx != -1) {
+      return getStringFromList(R.array.term_array, date.termIdx);
+    }
+    return "";
   }
 
-  public String getTerm(int termIdx) {
-    return termIdx == -1 ? "" : context.getResources().getStringArray(
-        R.array.term_array)[termIdx];
+  protected String getHour(LunarDate date) {
+    return getStringFromList(R.array.zhi_array, date.hourIdx);
   }
 
-  public String getHoliday(int holidayIdx) {
-    return holidayIdx == -1 ? "" : context.getResources().getStringArray(
-        R.array.holiday_array)[holidayIdx];
-  }
+  protected abstract String getSingleLineStatus(LunarDate date);
+
+  protected abstract String getDoubleLineStatus(LunarDate date);
+
+  public abstract String getDisplayExpandedTitle(LunarDate date);
+
+  public abstract String getDisplayExpandedBody(LunarDate date);
+
 }

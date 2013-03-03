@@ -19,8 +19,6 @@
     <string name="extension_title">萬年歷</string>
     <string name="extension_description">顯示中國農歷時辰。</string>
     <string name="title_settings">萬年歷設定</string>
-    <string name="click_url">http://www.google.com.tw/search?q=%1$s</string>
-    <string name="short_date_template">农历 %1$s月%2$s</string>
 
     <!-- Preference -->
     <string name="pref_status_number_of_lines_title">時鐘右側顯示樣式</string>
@@ -38,14 +36,13 @@
         <item>中文字符</item>
     </string-array>
 
-    <!-- Words -->
+    <!-- Traditional number format -->
     <string name="leap">閏</string>
     <string name="first_month">正</string>
     <string name="tenth">初十</string>
     <string name="twentieth">二十</string>
     <string name="thirtieth">三十</string>
 
-    <!-- Number arrays -->
     <string-array name="unit_number_array">
         <item>零</item>
         <item>一</item>
@@ -68,20 +65,17 @@
         <item>卅</item>
     </string-array>
 
-    <!-- Displaying Template -->
-    <!-- %1$s year -->
-    <!-- %2$s month -->
-    <!-- %3$s day -->
-    <!-- %4$s ganzhi -->
-    <!-- %5$s annimal -->
-    <!-- %6$s solar term -->
-    <!-- %7$s holiday -->
-    <!-- %8$s smart day(holiday>term>day) -->
-    <!-- %9$s ancient hour -->
-    <string name="status_single_template">%8$s</string>
-    <string name="status_double_template">%2$s月\n%3$s</string>
-    <string name="expanded_title_template">農歷%2$s月%3$s %6$s%7$s</string>
-    <string name="expanded_body_template">%4$s(%5$s)%1$s年 %9$s時</string>
+    <string name="template_traditional_status_single">%1$s</string>
+    <string name="template_traditional_status_double">%1$s月\n%2$s</string>
+    <string name="template_traditional_expanded_title">%1$s年%2$s月%3$s %4$s</string>
+    <string name="template_traditional_expanded_body">%1$s（%2$s）年，%3$s時</string>
+
+    <!-- Digital number format -->
+    <string name="template_digital_month">閏%1$d</string>
+    <string name="template_digital_status_single">%1$d日</string>
+    <string name="template_digital_status_double">%1$s月\n%2$d日</string>
+    <string name="template_digital_expanded_title">農歷紀元%1$d年%2$s月%3$d %4$s</string>
+    <string name="template_digital_expanded_body">%1$s（%2$s）年，%3$s時</string>
 
     <!-- String arrays -->
     <string-array name="gan_array">

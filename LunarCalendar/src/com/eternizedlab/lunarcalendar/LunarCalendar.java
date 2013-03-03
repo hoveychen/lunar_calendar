@@ -37,8 +37,13 @@ public class LunarCalendar {
      */
     int day;
     boolean isLeapMonth;
+    /**
+     * Additional info
+     */
+    int ganIdx, zhiIdx, zodiacIdx, termIdx, holidayIdx, hourIdx;
 
-    public LunarDate() {}
+    public LunarDate() {
+    }
 
     public LunarDate(int year, int month, int day, boolean isLeapMonth) {
       this.year = year;
@@ -53,63 +58,39 @@ public class LunarCalendar {
         return false;
       }
       LunarDate date = (LunarDate) o;
-      return this.year == date.year && this.month == date.month && this.day == date.day
-          && this.isLeapMonth == date.isLeapMonth;
+      return this.year == date.year && this.month == date.month
+          && this.day == date.day && this.isLeapMonth == date.isLeapMonth;
     }
 
     @Override
     public String toString() {
       return "" + year + "-" + month + (isLeapMonth ? "*" : "") + "-" + day;
     }
+
   }
 
-  /**
-   * Epoch is 1900/1/31
-   */
-  public static class SolarDate {
-    /**
-     * ranging [1900..2050]
-     */
-    int year;
-    /**
-     * ranging [1..12]
-     */
-    int month;
-    /**
-     * ranging [1..31]
-     */
-    int day;
-
-    public int getDaysSinceEpoch() {
-      Calendar baseDate = Calendar.getInstance();
-      Calendar currentDate = Calendar.getInstance();
-      baseDate.set(1900, Calendar.JANUARY, 31);
-      currentDate.set(year, month - 1, day);
-      return (int) ((currentDate.getTimeInMillis() - baseDate.getTimeInMillis()) / 86400000L);
-    }
-
-    public SolarDate() {}
-
-    public SolarDate(int year, int month, int day) {
-      this.year = year;
-      this.month = month;
-      this.day = day;
-    }
-  }
-
-  private LunarData lunarData;
+  private LunarData data;
 
   public LunarCalendar(LunarData lunarData) {
-    this.lunarData = lunarData;
+    this.data = lunarData;
   }
 
-  public LunarDate transformLunarDate(SolarDate solarDate) {
-    LunarDate lunarDate = new LunarDate();
-    int offset = solarDate.getDaysSinceEpoch();
+  private int getDaysSinceEpoch(Calendar calendar) {
+    Calendar baseDate = Calendar.getInstance();
+    Calendar currentDate = Calendar.getInstance();
+    baseDate.set(1900, Calendar.JANUARY, 31);
+    currentDate.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+        calendar.get(Calendar.DAY_OF_MONTH));
+    return (int) ((currentDate.getTimeInMillis() - baseDate.getTimeInMillis()) / 86400000L);
+  }
 
-    for (lunarDate.year = LunarData.LUNAR_INFO_FIRST_YEAR;
-        lunarDate.year <= LunarData.LUNAR_INFO_LAST_YEAR && offset > 0; ++lunarDate.year) {
-      int daysInYear = lunarData.getDaysInYear(lunarDate.year);
+  public LunarDate transformLunarDate(Calendar calendar) {
+    LunarDate lunarDate = new LunarDate();
+    int offset = getDaysSinceEpoch(calendar);
+
+    for (lunarDate.year = LunarData.LUNAR_INFO_FIRST_YEAR; lunarDate.year <= LunarData.LUNAR_INFO_LAST_YEAR
+        && offset > 0; ++lunarDate.year) {
+      int daysInYear = data.getDaysInYear(lunarDate.year);
       if (daysInYear <= offset) {
         offset -= daysInYear;
       } else {
@@ -117,10 +98,10 @@ public class LunarCalendar {
       }
     }
 
-    int leapMonth = lunarData.getLeapMonthIdx(lunarDate.year);
+    int leapMonth = data.getLeapMonthIdx(lunarDate.year);
 
     for (lunarDate.month = 1; lunarDate.month <= 12 && offset > 0; ++lunarDate.month) {
-      int daysInMonth = lunarData.getDaysInMonth(lunarDate.year, lunarDate.month);
+      int daysInMonth = data.getDaysInMonth(lunarDate.year, lunarDate.month);
       if (daysInMonth <= offset) {
         offset -= daysInMonth;
       } else {
@@ -129,7 +110,7 @@ public class LunarCalendar {
 
       if (leapMonth == lunarDate.month) {
         lunarDate.isLeapMonth = true;
-        daysInMonth = lunarData.getDaysInMonth(lunarDate.year, 0);
+        daysInMonth = data.getDaysInMonth(lunarDate.year, 0);
         if (daysInMonth <= offset) {
           offset -= daysInMonth;
         } else {
@@ -140,7 +121,17 @@ public class LunarCalendar {
     }
 
     lunarDate.day = offset + 1;
+    fillAdditionalInfo(lunarDate, calendar);
     return lunarDate;
   }
 
+  private void fillAdditionalInfo(LunarDate lunarDate, Calendar calendar) {
+    lunarDate.ganIdx = data.getGanIdx(lunarDate.year);
+    lunarDate.zhiIdx = data.getZhiIdx(lunarDate.year);
+    lunarDate.zodiacIdx = data.getAnimalsYearIdx(lunarDate.year);
+    lunarDate.termIdx = data.getTermIdx(calendar);
+    lunarDate.holidayIdx = data.getHolidayIdx(lunarDate.year, lunarDate.month,
+        lunarDate.isLeapMonth, lunarDate.day);
+    lunarDate.hourIdx = data.getAncientHourIdx(calendar);
+  }
 }

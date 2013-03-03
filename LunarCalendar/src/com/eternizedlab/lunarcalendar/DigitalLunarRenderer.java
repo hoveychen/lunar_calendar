@@ -15,24 +15,40 @@ package com.eternizedlab.lunarcalendar;
 
 import android.content.Context;
 
+import com.eternizedlab.lunarcalendar.LunarCalendar.LunarDate;
+
 public class DigitalLunarRenderer extends LunarRenderer {
 
   public DigitalLunarRenderer(Context context) {
     super(context);
   }
 
-  @Override
-  public String getYear(int year) {
-    return String.valueOf(year);
+  private String getMonth(LunarDate date) {
+    return date.isLeapMonth ? context.getString(
+        R.string.template_digital_month, date.month) : String
+        .valueOf(date.month);
   }
 
   @Override
-  public String getMonth(int month, boolean isLeapMonth) {
-    return (isLeapMonth ? context.getString(R.string.leap) : "") + month;
+  protected String getSingleLineStatus(LunarDate date) {
+    return context.getString(R.string.template_digital_status_single, date.day);
   }
 
   @Override
-  public String getDay(int day) {
-    return String.valueOf(day);
+  protected String getDoubleLineStatus(LunarDate date) {
+    return context.getString(R.string.template_digital_status_double,
+        getMonth(date), date.day);
+  }
+
+  @Override
+  public String getDisplayExpandedTitle(LunarDate date) {
+    return context.getString(R.string.template_digital_expanded_title,
+        date.year, getMonth(date), date.day, getSpecialDay(date));
+  }
+
+  @Override
+  public String getDisplayExpandedBody(LunarDate date) {
+    return context.getString(R.string.template_digital_expanded_body,
+        getGanZhiYear(date), getZodiac(date), getHour(date));
   }
 }
