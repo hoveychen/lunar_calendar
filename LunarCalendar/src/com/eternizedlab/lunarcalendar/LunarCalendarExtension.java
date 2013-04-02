@@ -36,6 +36,7 @@ public class LunarCalendarExtension extends DashClockExtension {
   public static final String PREF_STATUS_NUMBER_OF_LINES = "pref_status_number_of_lines";
   public static final String PREF_NUMBER_FORMAT = "pref_number_format";
   public static final String PREF_NEXT_SPECIAL = "pref_next_special";
+  public static final String PREF_LANGUAGE = "pref_language";
 
   private void setupRenderer(SharedPreferences sp) {
     String numStatusLines = sp.getString(PREF_STATUS_NUMBER_OF_LINES, "1");

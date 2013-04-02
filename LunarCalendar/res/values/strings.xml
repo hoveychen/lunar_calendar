@@ -19,36 +19,6 @@
     <string name="extension_title">Lunar Calendar</string>
     <string name="extension_description">Shows various lunar calendar information.</string>
     <string name="title_settings">Lunar Calendat Setting</string>
-
-    <!-- Traditional number format -->
-    <string name="leap">閏</string>
-    <string name="first_month">正</string>
-    <string name="tenth">初十</string>
-    <string name="twentieth">二十</string>
-    <string name="thirtieth">三十</string>
-
-    <string-array name="unit_number_array">
-        <item>零</item>
-        <item>一</item>
-        <item>二</item>
-        <item>三</item>
-        <item>四</item>
-        <item>五</item>
-        <item>六</item>
-        <item>七</item>
-        <item>八</item>
-        <item>九</item>
-        <item>十</item>
-        <item>十一</item>
-        <item>臘</item>
-    </string-array>
-    <string-array name="decade_number_array">
-        <item>初</item>
-        <item>十</item>
-        <item>廿</item>
-        <item>卅</item>
-    </string-array>
-
     <string name="template_traditional_status_single">%1$s</string>
     <string name="template_traditional_status_double">%1$s月\n%2$s</string>
     <string name="template_traditional_expanded_title">%1$s年%2$s月%3$s %4$s</string>
@@ -61,83 +31,5 @@
     <string name="template_digital_expanded_title">Lunar Cal. %2$s/%3$d/%1$d %4$s</string>
     <string name="template_digital_expanded_body">Year %1$s, Zodiac %2$s, Hour %3$s</string>
     <string name="template_next_special">, %1$d days to %2$s</string>
-
-    <!-- String arrays -->
-    <string-array name="gan_array">
-        <item>Jia</item>
-        <item>Yi</item>
-        <item>Bing</item>
-        <item>Ding</item>
-        <item>Wu</item>
-        <item>Ji</item>
-        <item>Geng</item>
-        <item>Xin</item>
-        <item>Ren</item>
-        <item>Gui</item>
-    </string-array>
-    <string-array name="zhi_array">
-        <item>Zi</item>
-        <item>Chou</item>
-        <item>Yin</item>
-        <item>Mao</item>
-        <item>Chen</item>
-        <item>Si</item>
-        <item>Wu</item>
-        <item>Wei</item>
-        <item>Shen</item>
-        <item>You</item>
-        <item>Xu</item>
-        <item>Hai</item>
-    </string-array>
-    <string-array name="animal_array">
-        <item>Rat</item>
-        <item>Ox</item>
-        <item>Tiger</item>
-        <item>Rabbit</item>
-        <item>Dragon</item>
-        <item>Snake</item>
-        <item>Horse</item>
-        <item>Goat</item>
-        <item>Monkey</item>
-        <item>Rooster</item>
-        <item>Dog</item>
-        <item>Pig</item>
-    </string-array>
-    <string-array name="term_array">
-        <item>Minor cold</item>
-        <item>Major cold</item>
-        <item>Start of spring</item>
-        <item>Rain water</item>
-        <item>Awakening of insects</item>
-        <item>Vernal equinox</item>
-        <item>Clear and bright</item>
-        <item>Grain rain</item>
-        <item>Start of summer</item>
-        <item>Grain full</item>
-        <item>Grain in ear</item>
-        <item>Summer solstice</item>
-        <item>Minor heat</item>
-        <item>Major heat</item>
-        <item>Start of autumn</item>
-        <item>Limit of heat</item>
-        <item>White dew</item>
-        <item>Autumnal equinox</item>
-        <item>Cold dew</item>
-        <item>Frost descent</item>
-        <item>Start of winter</item>
-        <item>Minor snow</item>
-        <item>Major snow</item>
-        <item>Winter solstice</item>
-    </string-array>
-    <string-array name="holiday_array">
-        <item>Spring Fest.</item>
-        <item>Lantern Fest.</item>
-        <item>Dragon Boat Fest.</item>
-        <item>CN Valentine\'s Day</item>
-        <item>Mid-autumn Fest.</item>
-        <item>Double Ninth Fest.</item>
-        <item>Laba Fest.</item>
-        <item>New Year\'s Eve</item>
-    </string-array>
 
 </resources>

@@ -14,6 +14,18 @@
 
 <resources>
 
+    <string name="pref_language_title">Display Language</string>
+    <string name="pref_language_default_value">en</string>
+
+    <string-array name="pref_language_options">
+        <item>Chinese</item>
+        <item>English</item>
+    </string-array>
+    <string-array name="pref_language_values" translatable="false">
+        <item>cn</item>
+        <item>en</item>
+    </string-array>
+
     <string name="pref_status_number_of_lines_title">Number of lines in status</string>
 
     <string-array name="pref_status_number_of_lines_options">
@@ -26,14 +38,12 @@
     </string-array>
 
     <string name="pref_number_format_title">Format of date</string>
+    <string name="pref_number_format_default_value">d</string>
 
     <string-array name="pref_number_format_options">
         <item>Digital Numbers</item>
         <item>Traditional Chinese Numbers</item>
     </string-array>
-
-    <string name="pref_number_format_default_value">d</string>
-
     <string-array name="pref_number_format_values" translatable="false">
         <item>d</item>
         <item>t</item>
