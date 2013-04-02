@@ -13,17 +13,9 @@
 //
 package com.eternizedlab.lunarcalendar;
 
-import android.content.Context;
-
 import com.eternizedlab.lunarcalendar.LunarCalendar.LunarDate;
 
 public abstract class LunarRenderer {
-  protected Context context;
-
-  public LunarRenderer(Context context) {
-    this.context = context;
-  }
-
   protected int numStatusLine = 1;
 
   public void setNumStatusLine(int numStatusLine) {
@@ -35,40 +27,32 @@ public abstract class LunarRenderer {
         : getDoubleLineStatus(date);
   }
 
-  protected String getStringFromList(int arrayResId, int idx) {
-    String[] array = context.getResources().getStringArray(arrayResId);
-    if (idx < 0 || idx >= array.length) {
-      return "";
-    } else {
-      return array[idx];
-    }
-  }
-
   protected String getGanZhiYear(LunarDate date) {
-    return getStringFromList(R.array.gan_array, date.ganIdx)
-        + getStringFromList(R.array.zhi_array, date.zhiIdx);
+    return RenderHelper.getStringFromList(R.array.gan_array, date.ganIdx)
+        + RenderHelper.getStringFromList(R.array.zhi_array, date.zhiIdx);
   }
 
   protected String getZodiac(LunarDate date) {
-    return getStringFromList(R.array.animal_array, date.zodiacIdx);
+    return RenderHelper.getStringFromList(R.array.animal_array, date.zodiacIdx);
   }
 
   protected String getSpecialDay(LunarDate date) {
     if (date.holidayIdx != -1) {
-      return getStringFromList(R.array.holiday_array, date.holidayIdx);
+      return RenderHelper.getStringFromList(R.array.holiday_array,
+          date.holidayIdx);
     }
     if (date.termIdx != -1) {
-      return getStringFromList(R.array.term_array, date.termIdx);
+      return RenderHelper.getStringFromList(R.array.term_array, date.termIdx);
     }
     return "";
   }
 
   protected String getHour(LunarDate date) {
-    return getStringFromList(R.array.zhi_array, date.hourIdx);
+    return RenderHelper.getStringFromList(R.array.zhi_array, date.hourIdx);
   }
 
   public String getNextSpecialDay(LunarDate date, int daysLeft) {
-    return context.getString(R.string.template_next_special, daysLeft,
+    return RenderHelper.getString(R.string.template_next_special, daysLeft,
         getSpecialDay(date));
   }
 

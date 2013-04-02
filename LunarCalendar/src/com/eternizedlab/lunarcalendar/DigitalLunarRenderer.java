@@ -13,42 +13,37 @@
 //
 package com.eternizedlab.lunarcalendar;
 
-import android.content.Context;
-
 import com.eternizedlab.lunarcalendar.LunarCalendar.LunarDate;
 
 public class DigitalLunarRenderer extends LunarRenderer {
 
-  public DigitalLunarRenderer(Context context) {
-    super(context);
-  }
-
   private String getMonth(LunarDate date) {
-    return date.isLeapMonth ? context.getString(
+    return date.isLeapMonth ? RenderHelper.getString(
         R.string.template_digital_month, date.month) : String
         .valueOf(date.month);
   }
 
   @Override
   protected String getSingleLineStatus(LunarDate date) {
-    return context.getString(R.string.template_digital_status_single, date.day);
+    return RenderHelper.getString(R.string.template_digital_status_single,
+        date.day);
   }
 
   @Override
   protected String getDoubleLineStatus(LunarDate date) {
-    return context.getString(R.string.template_digital_status_double,
+    return RenderHelper.getString(R.string.template_digital_status_double,
         getMonth(date), date.day);
   }
 
   @Override
   public String getDisplayExpandedTitle(LunarDate date) {
-    return context.getString(R.string.template_digital_expanded_title,
+    return RenderHelper.getString(R.string.template_digital_expanded_title,
         date.year, getMonth(date), date.day, getSpecialDay(date));
   }
 
   @Override
   public String getDisplayExpandedBody(LunarDate date) {
-    return context.getString(R.string.template_digital_expanded_body,
+    return RenderHelper.getString(R.string.template_digital_expanded_body,
         getGanZhiYear(date), getZodiac(date), getHour(date));
   }
 }

@@ -27,9 +27,8 @@ import com.google.android.apps.dashclock.api.ExtensionData;
 public class LunarCalendarExtension extends DashClockExtension {
   // private static final String TAG =
   // LunarCalendarExtension.class.getSimpleName();
-  private TraditionalLunarRenderer traditionalRenderer = new TraditionalLunarRenderer(
-      this);
-  private DigitalLunarRenderer digitalRenderer = new DigitalLunarRenderer(this);
+  private TraditionalLunarRenderer traditionalRenderer = new TraditionalLunarRenderer();
+  private DigitalLunarRenderer digitalRenderer = new DigitalLunarRenderer();
   private LunarCalendar calendar = new LunarCalendar();
   private LunarRenderer renderer;
 
@@ -91,6 +90,7 @@ public class LunarCalendarExtension extends DashClockExtension {
   protected void onInitialize(boolean isReconnect) {
     super.onInitialize(isReconnect);
     setUpdateWhenScreenOn(true);
+    RenderHelper.initialize(this);
   }
 
 }

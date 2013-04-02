@@ -15,23 +15,16 @@ package com.eternizedlab.lunarcalendar;
 
 import java.util.Locale;
 
-import android.content.Context;
-
 import com.eternizedlab.lunarcalendar.LunarCalendar.LunarDate;
 
 public class TraditionalLunarRenderer extends LunarRenderer {
 
-  public TraditionalLunarRenderer(Context context) {
-    super(context);
-  }
-
   public String getYear(LunarDate date) {
-    String[] unitNumbers = context.getResources().getStringArray(
-        R.array.unit_number_array);
     StringBuilder sb = new StringBuilder();
     int year = date.year;
     while (year > 0) {
-      sb.append(unitNumbers[year % 10]);
+      sb.append(RenderHelper.getStringFromList(R.array.unit_number_array,
+          year % 10));
       year /= 10;
     }
     return sb.reverse().toString();
@@ -40,12 +33,13 @@ public class TraditionalLunarRenderer extends LunarRenderer {
   public String getMonth(LunarDate date) {
     StringBuilder sb = new StringBuilder();
     if (date.isLeapMonth) {
-      sb.append(context.getString(R.string.leap));
+      sb.append(RenderHelper.getString(R.string.leap));
     }
     if (date.month == 1) {
-      sb.append(context.getString(R.string.first_month));
+      sb.append(RenderHelper.getString(R.string.first_month));
     } else {
-      sb.append(getStringFromList(R.array.unit_number_array, date.month));
+      sb.append(RenderHelper.getStringFromList(R.array.unit_number_array,
+          date.month));
     }
     return sb.toString();
   }
@@ -53,14 +47,16 @@ public class TraditionalLunarRenderer extends LunarRenderer {
   public String getDay(LunarDate date) {
     switch (date.day) {
     case 10:
-      return context.getString(R.string.tenth);
+      return RenderHelper.getString(R.string.tenth);
     case 20:
-      return context.getString(R.string.twentieth);
+      return RenderHelper.getString(R.string.twentieth);
     case 30:
-      return context.getString(R.string.thirtieth);
+      return RenderHelper.getString(R.string.thirtieth);
     default:
-      return getStringFromList(R.array.decade_number_array, date.day / 10)
-          + getStringFromList(R.array.unit_number_array, date.day % 10);
+      return RenderHelper.getStringFromList(R.array.decade_number_array,
+          date.day / 10)
+          + RenderHelper.getStringFromList(R.array.unit_number_array,
+              date.day % 10);
     }
   }
 
@@ -70,10 +66,11 @@ public class TraditionalLunarRenderer extends LunarRenderer {
     if (Locale.SIMPLIFIED_CHINESE.equals(Locale.getDefault())
         || Locale.TRADITIONAL_CHINESE.equals(Locale.getDefault())) {
       if (date.holidayIdx != -1) {
-        return getStringFromList(R.array.holiday_array, date.holidayIdx);
+        return RenderHelper.getStringFromList(R.array.holiday_array,
+            date.holidayIdx);
       }
       if (date.termIdx != -1) {
-        return getStringFromList(R.array.term_array, date.termIdx);
+        return RenderHelper.getStringFromList(R.array.term_array, date.termIdx);
       }
     }
     return getDay(date);
@@ -81,25 +78,25 @@ public class TraditionalLunarRenderer extends LunarRenderer {
 
   @Override
   protected String getSingleLineStatus(LunarDate date) {
-    return context.getString(R.string.template_traditional_status_single,
+    return RenderHelper.getString(R.string.template_traditional_status_single,
         getStatusDay(date));
   }
 
   @Override
   protected String getDoubleLineStatus(LunarDate date) {
-    return context.getString(R.string.template_traditional_status_double,
+    return RenderHelper.getString(R.string.template_traditional_status_double,
         getMonth(date), getDay(date));
   }
 
   @Override
   public String getDisplayExpandedTitle(LunarDate date) {
-    return context.getString(R.string.template_traditional_expanded_title,
+    return RenderHelper.getString(R.string.template_traditional_expanded_title,
         getYear(date), getMonth(date), getDay(date), getSpecialDay(date));
   }
 
   @Override
   public String getDisplayExpandedBody(LunarDate date) {
-    return context.getString(R.string.template_traditional_expanded_body,
+    return RenderHelper.getString(R.string.template_traditional_expanded_body,
         getGanZhiYear(date), getZodiac(date), getHour(date));
   }
 
