@@ -20,25 +20,6 @@
     <string name="extension_description">显示中国农历时辰。</string>
     <string name="title_settings">万年历设置</string>
 
-    <!-- Preference -->
-    <string name="pref_status_number_of_lines_title">时钟右侧显示风格</string>
-
-    <string-array name="pref_status_number_of_lines_options">
-        <item>单行 (第几日)</item>
-        <item>双行 (月份和第几日)</item>
-    </string-array>
-
-    <string name="pref_number_format_title">日期风格</string>
-    <string name="pref_number_format_default_value">t</string>
-
-    <string-array name="pref_number_format_options">
-        <item>纯数字</item>
-        <item>中文字符</item>
-    </string-array>
-
-    <string name="pref_next_special_title">下一个日子</string>
-    <string name="pref_next_special_summary">显示即将来临的下一个时节或节日</string>
-
     <!-- Traditional number format -->
     <string name="leap">闰</string>
     <string name="first_month">正</string>

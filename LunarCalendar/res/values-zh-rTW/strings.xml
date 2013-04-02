@@ -20,22 +20,6 @@
     <string name="extension_description">顯示中國農歷時辰。</string>
     <string name="title_settings">萬年歷設定</string>
 
-    <!-- Preference -->
-    <string name="pref_status_number_of_lines_title">時鐘右側顯示樣式</string>
-
-    <string-array name="pref_status_number_of_lines_options">
-        <item>單行 (第幾日)</item>
-        <item>雙行 (月份和第幾日)</item>
-    </string-array>
-
-    <string name="pref_number_format_title">數字樣式</string>
-    <string name="pref_number_format_default_value">t</string>
-
-    <string-array name="pref_number_format_options">
-        <item>純數字</item>
-        <item>中文字符</item>
-    </string-array>
-
     <!-- Traditional number format -->
     <string name="leap">閏</string>
     <string name="first_month">正</string>

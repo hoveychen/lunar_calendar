@@ -1,0 +1,45 @@
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<resources>
+
+    <string name="pref_status_number_of_lines_title">Number of lines in status</string>
+
+    <string-array name="pref_status_number_of_lines_options">
+        <item>Single line (Days)</item>
+        <item>Double line (Month/Days)</item>
+    </string-array>
+    <string-array name="pref_status_number_of_lines_values" translatable="false">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string name="pref_number_format_title">Format of date</string>
+
+    <string-array name="pref_number_format_options">
+        <item>Digital Numbers</item>
+        <item>Traditional Chinese Numbers</item>
+    </string-array>
+
+    <string name="pref_number_format_default_value">d</string>
+
+    <string-array name="pref_number_format_values" translatable="false">
+        <item>d</item>
+        <item>t</item>
+    </string-array>
+
+    <string name="pref_next_special_title">Next special day</string>
+    <string name="pref_next_special_summary">Display the upcoming solar term or holiday</string>
+
+</resources>

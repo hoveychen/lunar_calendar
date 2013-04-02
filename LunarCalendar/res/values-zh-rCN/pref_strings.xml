@@ -1,0 +1,35 @@
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<resources>
+
+    <string name="pref_status_number_of_lines_title">时钟右侧显示风格</string>
+
+    <string-array name="pref_status_number_of_lines_options">
+        <item>单行 (第几日)</item>
+        <item>双行 (月份和第几日)</item>
+    </string-array>
+
+    <string name="pref_number_format_title">日期风格</string>
+    <string name="pref_number_format_default_value">t</string>
+
+    <string-array name="pref_number_format_options">
+        <item>纯数字</item>
+        <item>中文字符</item>
+    </string-array>
+
+    <string name="pref_next_special_title">下一个日子</string>
+    <string name="pref_next_special_summary">显示即将来临的下一个时节或节日</string>
+
+</resources>
