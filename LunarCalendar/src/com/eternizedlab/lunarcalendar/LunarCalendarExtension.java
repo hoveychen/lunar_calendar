@@ -14,11 +14,13 @@
 package com.eternizedlab.lunarcalendar;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import com.eternizedlab.lunarcalendar.LunarCalendar.LunarDate;
 import com.google.android.apps.dashclock.api.DashClockExtension;
@@ -48,7 +50,10 @@ public class LunarCalendarExtension extends DashClockExtension {
   @Override
   protected void onUpdateData(int reason) {
     SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+
+    RenderHelper.setLocale(getDisplayLocale(sp));
     setupRenderer(sp);
+
     String nextSpecialDayTitle = "";
     if (sp.getBoolean(PREF_NEXT_SPECIAL, true)) {
       Calendar cal = Calendar.getInstance();
@@ -65,6 +70,9 @@ public class LunarCalendarExtension extends DashClockExtension {
 
     LunarDate date = calendar.transformLunarDate(Calendar.getInstance());
 
+    Log.i("Test", renderer.getDisplayStatus(date));
+    Log.i("Test", renderer.getDisplayExpandedTitle(date));
+    Log.i("Test", renderer.getDisplayExpandedBody(date) + nextSpecialDayTitle);
     // Publish the extension data update.
     publishUpdate(new ExtensionData()
         .visible(true)
@@ -84,6 +92,16 @@ public class LunarCalendarExtension extends DashClockExtension {
   private Intent getWebpageIntent() {
     return new Intent(Intent.ACTION_VIEW,
         Uri.parse("http://www.baidu.com/s?wd=%E4%B8%87%E5%B9%B4%E5%8E%86"));
+  }
+
+  private Locale getDisplayLocale(SharedPreferences sp) {
+    String language = sp.getString(PREF_LANGUAGE,
+        getString(R.string.pref_language_default_value));
+    if ("cn".equals(language)) {
+      return Locale.CHINA;
+    } else {
+      return Locale.ENGLISH;
+    }
   }
 
   @Override

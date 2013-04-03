@@ -32,4 +32,19 @@
     <string name="template_digital_expanded_body">Year %1$s, Zodiac %2$s, Hour %3$s</string>
     <string name="template_next_special">, %1$d days to %2$s</string>
 
+    <!-- Placeholder for template strings -->
+    <string name="leap" />
+    <string name="first_month" />
+    <string name="tenth" />
+    <string name="twentieth" />
+    <string name="thirtieth" />
+
+    <string-array name="unit_number_array" />
+    <string-array name="decade_number_array" />
+    <string-array name="gan_array" />
+    <string-array name="zhi_array" />
+    <string-array name="animal_array" />
+    <string-array name="term_array" />
+    <string-array name="holiday_array" />
+
 </resources>

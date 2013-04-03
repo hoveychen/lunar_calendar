@@ -13,6 +13,8 @@
 //
 package com.eternizedlab.lunarcalendar;
 
+import java.util.Locale;
+
 import android.content.Context;
 
 /**
@@ -22,7 +24,9 @@ import android.content.Context;
  *
  */
 public final class RenderHelper {
-  protected static Context context;
+  private static Context context;
+  private static ResourceMap resourceMap;
+  private static Locale currentLocale;
 
   /**
    * Save context into helper. Must be called before any further invoking.
@@ -37,16 +41,24 @@ public final class RenderHelper {
   private RenderHelper() {
   }
 
+  public static void setLocale(Locale locale) {
+    if (!locale.equals(currentLocale)) {
+      currentLocale = locale;
+      resourceMap = new ResourceMap(locale);
+    }
+  }
+
   public static String getString(int resId) {
-    return context.getString(resId);
+    return context.getString(resourceMap.getResourceId(resId));
   }
 
   public static String getString(int resId, Object... args) {
-    return context.getString(resId, args);
+    return context.getString(resourceMap.getResourceId(resId), args);
   }
 
   public static String getStringFromList(int arrayResId, int idx) {
-    String[] array = context.getResources().getStringArray(arrayResId);
+    String[] array = context.getResources().getStringArray(
+        resourceMap.getResourceId(arrayResId));
     if (idx < 0 || idx >= array.length) {
       return "";
     } else {
