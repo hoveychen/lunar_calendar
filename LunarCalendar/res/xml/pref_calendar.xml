@@ -14,35 +14,37 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <ListPreference
-        android:defaultValue="@string/pref_language_default_value"
-        android:entries="@array/pref_language_options"
-        android:entryValues="@array/pref_language_values"
-        android:key="pref_language"
-        android:negativeButtonText="@null"
-        android:positiveButtonText="@null"
-        android:title="@string/pref_language_title" />
-    <ListPreference
-        android:defaultValue="1"
-        android:entries="@array/pref_status_number_of_lines_options"
-        android:entryValues="@array/pref_status_number_of_lines_values"
-        android:key="pref_status_number_of_lines"
-        android:negativeButtonText="@null"
-        android:positiveButtonText="@null"
-        android:title="@string/pref_status_number_of_lines_title" />
-    <ListPreference
-        android:defaultValue="@string/pref_number_format_default_value"
-        android:entries="@array/pref_number_format_options"
-        android:entryValues="@array/pref_number_format_values"
-        android:key="pref_number_format"
-        android:negativeButtonText="@null"
-        android:positiveButtonText="@null"
-        android:title="@string/pref_number_format_title" />
+    <PreferenceCategory android:title="@string/pref_category_display_title" >
+        <ListPreference
+            android:defaultValue="@string/pref_language_default_value"
+            android:entries="@array/pref_language_options"
+            android:entryValues="@array/pref_language_values"
+            android:key="pref_language"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="@string/pref_language_title" />
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/pref_status_number_of_lines_options"
+            android:entryValues="@array/pref_status_number_of_lines_values"
+            android:key="pref_status_number_of_lines"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="@string/pref_status_number_of_lines_title" />
 
-    <CheckBoxPreference
-        android:defaultValue="true"
-        android:key="pref_next_special"
-        android:title="@string/pref_next_special_title" 
-        android:summary="@string/pref_next_special_summary"/>
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="pref_next_special"
+            android:summary="@string/pref_next_special_summary"
+            android:title="@string/pref_next_special_title" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_category_supprot_title" >
+        <Preference
+            android:summary="@string/pref_rating_summary"
+            android:title="@string/pref_rating_title" />
+        <Preference
+            android:summary="@string/pref_contact_summary"
+            android:title="@string/pref_contact_title" />
+    </PreferenceCategory>
 
 </PreferenceScreen>

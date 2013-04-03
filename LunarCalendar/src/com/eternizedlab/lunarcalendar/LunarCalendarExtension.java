@@ -27,31 +27,31 @@ import com.google.android.apps.dashclock.api.DashClockExtension;
 import com.google.android.apps.dashclock.api.ExtensionData;
 
 public class LunarCalendarExtension extends DashClockExtension {
-  // private static final String TAG =
-  // LunarCalendarExtension.class.getSimpleName();
+  private static final String TAG = LunarCalendarExtension.class
+      .getSimpleName();
   private TraditionalLunarRenderer traditionalRenderer = new TraditionalLunarRenderer();
   private DigitalLunarRenderer digitalRenderer = new DigitalLunarRenderer();
   private LunarCalendar calendar = new LunarCalendar();
   private LunarRenderer renderer;
 
   public static final String PREF_STATUS_NUMBER_OF_LINES = "pref_status_number_of_lines";
-  public static final String PREF_NUMBER_FORMAT = "pref_number_format";
   public static final String PREF_NEXT_SPECIAL = "pref_next_special";
   public static final String PREF_LANGUAGE = "pref_language";
 
   private void setupRenderer(SharedPreferences sp) {
     String numStatusLines = sp.getString(PREF_STATUS_NUMBER_OF_LINES, "1");
-    String numberFormat = sp.getString(PREF_NUMBER_FORMAT,
-        getString(R.string.pref_number_format_default_value));
-    renderer = "t".equals(numberFormat) ? traditionalRenderer : digitalRenderer;
+    String language = sp.getString(PREF_LANGUAGE,
+        getString(R.string.pref_language_default_value));
+    renderer = "cn_traditional".equals(language) ? traditionalRenderer
+        : digitalRenderer;
     renderer.setNumStatusLine("1".equals(numStatusLines) ? 1 : 2);
+    RenderHelper.setLocale(getDisplayLocale(language));
   }
 
   @Override
   protected void onUpdateData(int reason) {
     SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
 
-    RenderHelper.setLocale(getDisplayLocale(sp));
     setupRenderer(sp);
 
     String nextSpecialDayTitle = "";
@@ -70,9 +70,9 @@ public class LunarCalendarExtension extends DashClockExtension {
 
     LunarDate date = calendar.transformLunarDate(Calendar.getInstance());
 
-    Log.i("Test", renderer.getDisplayStatus(date));
-    Log.i("Test", renderer.getDisplayExpandedTitle(date));
-    Log.i("Test", renderer.getDisplayExpandedBody(date) + nextSpecialDayTitle);
+    Log.v(TAG, renderer.getDisplayStatus(date));
+    Log.v(TAG, renderer.getDisplayExpandedTitle(date));
+    Log.v(TAG, renderer.getDisplayExpandedBody(date) + nextSpecialDayTitle);
     // Publish the extension data update.
     publishUpdate(new ExtensionData()
         .visible(true)
@@ -94,13 +94,11 @@ public class LunarCalendarExtension extends DashClockExtension {
         Uri.parse("http://www.baidu.com/s?wd=%E4%B8%87%E5%B9%B4%E5%8E%86"));
   }
 
-  private Locale getDisplayLocale(SharedPreferences sp) {
-    String language = sp.getString(PREF_LANGUAGE,
-        getString(R.string.pref_language_default_value));
-    if ("cn".equals(language)) {
-      return Locale.CHINA;
-    } else {
+  private Locale getDisplayLocale(String language) {
+    if ("en".equals(language)) {
       return Locale.ENGLISH;
+    } else {
+      return Locale.CHINESE;
     }
   }
 

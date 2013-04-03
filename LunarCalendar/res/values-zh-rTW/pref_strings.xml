@@ -14,16 +14,18 @@
 
 <resources>
 
+    <string name="pref_category_display_title">顯示</string>
+    <string name="pref_category_supprot_title">支援</string>
+    <string name="pref_rating_title">Google Play中查看本擴展</string>
+    <string name="pref_rating_summary">對鎖屏萬年歷進行分享、評分或者評論。</string>
+    <string name="pref_contact_title">反饋</string>
     <string name="pref_language_title">顯示語言</string>
-    <string name="pref_language_default_value">cn</string>
+    <string name="pref_language_default_value">cn_traditional</string>
 
     <string-array name="pref_language_options">
-        <item>中文</item>
+        <item>中文（中文數字）</item>
+        <item>中文（純數字）</item>
         <item>英文</item>
-    </string-array>
-    <string-array name="pref_language_values" translatable="false">
-        <item>cn</item>
-        <item>en</item>
     </string-array>
 
     <string name="pref_status_number_of_lines_title">時鐘右側顯示樣式</string>
@@ -31,14 +33,6 @@
     <string-array name="pref_status_number_of_lines_options">
         <item>單行 (第幾日)</item>
         <item>雙行 (月份和第幾日)</item>
-    </string-array>
-
-    <string name="pref_number_format_title">數字樣式</string>
-    <string name="pref_number_format_default_value">t</string>
-
-    <string-array name="pref_number_format_options">
-        <item>純數字</item>
-        <item>中文字符</item>
     </string-array>
 
     <string name="pref_next_special_title">下一個日子</string>

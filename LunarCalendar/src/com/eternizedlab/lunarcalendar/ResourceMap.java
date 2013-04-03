@@ -62,7 +62,7 @@ public class ResourceMap {
   private SparseIntArray currentRessourceMap;
 
   public ResourceMap(Locale locale) {
-    if (Locale.CHINA.equals(locale)) {
+    if (Locale.CHINESE.equals(locale)) {
       currentRessourceMap = getChineseMap();
     } else {
       currentRessourceMap = getEnglishMap();

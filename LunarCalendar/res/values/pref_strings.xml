@@ -14,15 +14,23 @@
 
 <resources>
 
+    <string name="pref_category_display_title">Display</string>
+    <string name="pref_category_supprot_title">Support</string>
+    <string name="pref_rating_title">View on Google Play</string>
+    <string name="pref_rating_summary">Share, rate or comment on Lunar Calendar Extension.</string>
+    <string name="pref_contact_title">Email Developer</string>
+    <string name="pref_contact_summary">hoveychen@gmail.com</string>
     <string name="pref_language_title">Display Language</string>
     <string name="pref_language_default_value">en</string>
 
     <string-array name="pref_language_options">
-        <item>Chinese</item>
+        <item>Chinese(Traditional number)</item>
+        <item>Chinese(Digital number)</item>
         <item>English</item>
     </string-array>
     <string-array name="pref_language_values" translatable="false">
-        <item>cn</item>
+        <item>cn_traditional</item>
+        <item>cn_digital</item>
         <item>en</item>
     </string-array>
 
@@ -35,18 +43,6 @@
     <string-array name="pref_status_number_of_lines_values" translatable="false">
         <item>1</item>
         <item>2</item>
-    </string-array>
-
-    <string name="pref_number_format_title">Format of date</string>
-    <string name="pref_number_format_default_value">d</string>
-
-    <string-array name="pref_number_format_options">
-        <item>Digital Numbers</item>
-        <item>Traditional Chinese Numbers</item>
-    </string-array>
-    <string-array name="pref_number_format_values" translatable="false">
-        <item>d</item>
-        <item>t</item>
     </string-array>
 
     <string name="pref_next_special_title">Next special day</string>

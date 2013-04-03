@@ -52,7 +52,6 @@ public class LunarCalendarSettingsActivity extends PreferenceActivity {
     // Add 'general' preferences.
     addPreferencesFromResource(R.xml.pref_calendar);
 
-    bindPreferenceSummaryToValue(findPreference(LunarCalendarExtension.PREF_NUMBER_FORMAT));
     bindPreferenceSummaryToValue(findPreference(LunarCalendarExtension.PREF_STATUS_NUMBER_OF_LINES));
     bindPreferenceSummaryToValue(findPreference(LunarCalendarExtension.PREF_LANGUAGE));
   }
