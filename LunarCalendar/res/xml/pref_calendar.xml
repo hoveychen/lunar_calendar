@@ -40,11 +40,21 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_category_supprot_title" >
         <Preference
+            android:persistent="false"
             android:summary="@string/pref_rating_summary"
-            android:title="@string/pref_rating_title" />
+            android:title="@string/pref_rating_title" >
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="market://details?id=com.eternizedlab.lunarcalendar" />
+        </Preference>
         <Preference
+            android:persistent="false"
             android:summary="@string/pref_contact_summary"
-            android:title="@string/pref_contact_title" />
+            android:title="@string/pref_contact_title" >
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="mailto:hoveychen@gmail.com" />
+        </Preference>
     </PreferenceCategory>
 
 </PreferenceScreen>

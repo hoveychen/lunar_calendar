@@ -54,6 +54,7 @@ public class LunarCalendarSettingsActivity extends PreferenceActivity {
 
     bindPreferenceSummaryToValue(findPreference(LunarCalendarExtension.PREF_STATUS_NUMBER_OF_LINES));
     bindPreferenceSummaryToValue(findPreference(LunarCalendarExtension.PREF_LANGUAGE));
+
   }
 
   /**
