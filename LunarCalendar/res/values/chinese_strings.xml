@@ -14,6 +14,20 @@
 
 <resources>
 
+    <!-- Traditional(Chinese) number format -->
+    <string name="cn_template_traditional_status_single">%1$s</string>
+    <string name="cn_template_traditional_status_double">%1$s月\n%2$s</string>
+    <string name="cn_template_traditional_expanded_title">%1$s年%2$s月%3$s %4$s</string>
+    <string name="cn_template_traditional_expanded_body">%1$s（%2$s）年，%3$s時</string>
+
+    <!-- Digital number format -->
+    <string name="cn_template_digital_month">閏%1$d</string>
+    <string name="cn_template_digital_status_single">%1$d日</string>
+    <string name="cn_template_digital_status_double">%1$s月\n%2$d日</string>
+    <string name="cn_template_digital_expanded_title">農歷紀元%1$d年%2$s月%3$d %4$s</string>
+    <string name="cn_template_digital_expanded_body">%1$s（%2$s）年，%3$s時</string>
+    <string name="cn_template_next_special">，離%2$s還有%1$d天</string>
+
     <!-- Chinese number format -->
     <string name="cn_leap">閏</string>
     <string name="cn_first_month">正</string>

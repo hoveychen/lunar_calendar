@@ -20,16 +20,4 @@
     <string name="extension_description">显示中国农历时辰。</string>
     <string name="title_settings">万年历设置</string>
 
-    <!-- Templates -->
-    <string name="template_traditional_status_single">%1$s</string>
-    <string name="template_traditional_status_double">%1$s月\n%2$s</string>
-    <string name="template_traditional_expanded_title">%1$s年%2$s月%3$s %4$s</string>
-    <string name="template_traditional_expanded_body">%1$s（%2$s）年，%3$s时</string>
-    <string name="template_digital_month">闰%1$d</string>
-    <string name="template_digital_status_single">%1$d日</string>
-    <string name="template_digital_status_double">%1$s月\n%2$d日</string>
-    <string name="template_digital_expanded_title">农历纪元%1$d年%2$s月%3$d %4$s</string>
-    <string name="template_digital_expanded_body">%1$s（%2$s）年，%3$s时</string>
-    <string name="template_next_special">，离%2$s还有%1$d天</string>
-
 </resources>

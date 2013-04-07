@@ -29,32 +29,24 @@ import com.google.android.apps.dashclock.api.ExtensionData;
 public class LunarCalendarExtension extends DashClockExtension {
   private static final String TAG = LunarCalendarExtension.class
       .getSimpleName();
-  private TraditionalLunarRenderer traditionalRenderer = new TraditionalLunarRenderer();
-  private DigitalLunarRenderer digitalRenderer = new DigitalLunarRenderer();
   private LunarCalendar calendar = new LunarCalendar();
-  private LunarRenderer renderer;
 
   public static final String PREF_STATUS_NUMBER_OF_LINES = "pref_status_number_of_lines";
   public static final String PREF_NEXT_SPECIAL = "pref_next_special";
   public static final String PREF_LANGUAGE = "pref_language";
 
-  private void setupRenderer(SharedPreferences sp) {
+  private LunarRenderer setupRenderer(SharedPreferences sp) {
     String numStatusLines = sp.getString(PREF_STATUS_NUMBER_OF_LINES, "1");
     String language = sp.getString(PREF_LANGUAGE,
         getString(R.string.pref_language_default_value));
-    renderer = "cn_traditional".equals(language) ? traditionalRenderer
-        : digitalRenderer;
+    LunarRenderer renderer = "cn_traditional".equals(language) ? TraditionalLunarRenderer
+        .getInstance() : DigitalLunarRenderer.getInstance();
     renderer.setNumStatusLine("1".equals(numStatusLines) ? 1 : 2);
     RenderHelper.setLocale(getDisplayLocale(language));
+    return renderer;
   }
 
-  @Override
-  protected void onUpdateData(int reason) {
-    SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-
-    setupRenderer(sp);
-
-    String nextSpecialDayTitle = "";
+  private String getNextSpecialDay(SharedPreferences sp, LunarRenderer renderer) {
     if (sp.getBoolean(PREF_NEXT_SPECIAL, true)) {
       Calendar cal = Calendar.getInstance();
       cal.add(Calendar.DAY_OF_MONTH, 1);
@@ -65,22 +57,27 @@ public class LunarCalendarExtension extends DashClockExtension {
         ld = calendar.nextDay(ld, cal);
         cal.add(Calendar.DAY_OF_MONTH, 1);
       }
-      nextSpecialDayTitle = renderer.getNextSpecialDay(ld, daysLeft);
+      return renderer.getNextSpecialDay(ld, daysLeft);
+    } else {
+      return "";
     }
+  }
 
+  @Override
+  protected void onUpdateData(int reason) {
+    SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+    LunarRenderer renderer = setupRenderer(sp);
     LunarDate date = calendar.transformLunarDate(Calendar.getInstance());
+    String status = renderer.getDisplayStatus(date);
+    String expandTitle = renderer.getDisplayExpandedTitle(date);
+    String expandBody = renderer.getDisplayExpandedBody(date)
+        + getNextSpecialDay(sp, renderer);
 
-    Log.v(TAG, renderer.getDisplayStatus(date));
-    Log.v(TAG, renderer.getDisplayExpandedTitle(date));
-    Log.v(TAG, renderer.getDisplayExpandedBody(date) + nextSpecialDayTitle);
+    Log.v(TAG, status + "|" + expandTitle + "|" + expandBody);
     // Publish the extension data update.
-    publishUpdate(new ExtensionData()
-        .visible(true)
-        .icon(R.drawable.ic_extension_lunarcalendar)
-        .status(renderer.getDisplayStatus(date))
-        .expandedTitle(renderer.getDisplayExpandedTitle(date))
-        .expandedBody(
-            renderer.getDisplayExpandedBody(date) + nextSpecialDayTitle)
+    publishUpdate(new ExtensionData().visible(true)
+        .icon(R.drawable.ic_extension_lunarcalendar).status(status)
+        .expandedTitle(expandTitle).expandedBody(expandBody)
         .clickIntent(getWebpageIntent()));
   }
 

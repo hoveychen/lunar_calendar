@@ -17,6 +17,18 @@ import com.eternizedlab.lunarcalendar.LunarCalendar.LunarDate;
 
 public class DigitalLunarRenderer extends LunarRenderer {
 
+  private DigitalLunarRenderer() {
+  }
+
+  private static DigitalLunarRenderer instance;
+
+  public static final DigitalLunarRenderer getInstance() {
+    if (instance == null) {
+      instance = new DigitalLunarRenderer();
+    }
+    return instance;
+  }
+
   private String getMonth(LunarDate date) {
     return date.isLeapMonth ? RenderHelper.getString(
         R.string.template_digital_month, date.month) : String

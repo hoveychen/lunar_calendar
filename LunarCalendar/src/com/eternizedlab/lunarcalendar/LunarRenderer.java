@@ -16,6 +16,10 @@ package com.eternizedlab.lunarcalendar;
 import com.eternizedlab.lunarcalendar.LunarCalendar.LunarDate;
 
 public abstract class LunarRenderer {
+
+  protected LunarRenderer() {
+  }
+
   protected int numStatusLine = 1;
 
   public void setNumStatusLine(int numStatusLine) {

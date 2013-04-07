@@ -19,20 +19,18 @@
     <string name="extension_title">Lunar Calendar</string>
     <string name="extension_description">Shows various lunar calendar information.</string>
     <string name="title_settings">Lunar Calendat Setting</string>
-    <string name="template_traditional_status_single">%1$s</string>
-    <string name="template_traditional_status_double">%1$s月\n%2$s</string>
-    <string name="template_traditional_expanded_title">%1$s年%2$s月%3$s %4$s</string>
-    <string name="template_traditional_expanded_body">Year %1$s, Zodiac %2$s, Hour %3$s</string>
-
-    <!-- Digital number format -->
-    <string name="template_digital_month">%1$d(L)</string>
-    <string name="template_digital_status_single">Day %1$d</string>
-    <string name="template_digital_status_double">Mon %1$s\nDay %2$d</string>
-    <string name="template_digital_expanded_title">Lunar Cal. %2$s/%3$d/%1$d %4$s</string>
-    <string name="template_digital_expanded_body">Year %1$s, Zodiac %2$s, Hour %3$s</string>
-    <string name="template_next_special">, %1$d days to %2$s</string>
 
     <!-- Placeholder for template strings -->
+    <string name="template_traditional_status_single" />
+    <string name="template_traditional_status_double" />
+    <string name="template_traditional_expanded_title" />
+    <string name="template_traditional_expanded_body" />
+    <string name="template_digital_month" />
+    <string name="template_digital_status_single" />
+    <string name="template_digital_status_double" />
+    <string name="template_digital_expanded_title" />
+    <string name="template_digital_expanded_body" />
+    <string name="template_next_special" />
     <string name="leap" />
     <string name="first_month" />
     <string name="tenth" />

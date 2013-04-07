@@ -14,34 +14,14 @@
 
 <resources>
 
-    <string name="en_leap">*</string>
-    <string name="en_first_month">1</string>
-    <string name="en_tenth">10</string>
-    <string name="en_twentieth">20</string>
-    <string name="en_thirtieth">30</string>
-    
-     <string-array name="en_unit_number_array">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
-    </string-array>
-    <string-array name="en_decade_number_array">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-    </string-array>
-    
+    <!-- Digital number format -->
+    <string name="en_template_digital_month">%1$d(L)</string>
+    <string name="en_template_digital_status_single">Day %1$d</string>
+    <string name="en_template_digital_status_double">Mon %1$s\nDay %2$d</string>
+    <string name="en_template_digital_expanded_title">Lunar Cal. %2$s/%3$d/%1$d %4$s</string>
+    <string name="en_template_digital_expanded_body">Year %1$s, Zodiac %2$s, Hour %3$s</string>
+    <string name="en_template_next_special">, %1$d days to %2$s</string>
+
     <!-- String arrays -->
     <string-array name="en_gan_array">
         <item>Jia</item>

@@ -19,6 +19,18 @@ import com.eternizedlab.lunarcalendar.LunarCalendar.LunarDate;
 
 public class TraditionalLunarRenderer extends LunarRenderer {
 
+  private TraditionalLunarRenderer() {
+  }
+
+  private static TraditionalLunarRenderer instance;
+
+  public static final TraditionalLunarRenderer getInstance() {
+    if (instance == null) {
+      instance = new TraditionalLunarRenderer();
+    }
+    return instance;
+  }
+
   public String getYear(LunarDate date) {
     StringBuilder sb = new StringBuilder();
     int year = date.year;
