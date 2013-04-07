@@ -14,6 +14,7 @@
 package com.eternizedlab.lunarcalendar;
 
 import java.util.Calendar;
+import java.util.TimeZone;
 
 /**
  * Lunar calendar. Used to transform date from solar date to lunar date.
@@ -72,8 +73,8 @@ public class LunarCalendar {
   private LunarData data = new LunarData();
 
   private int getDaysSinceEpoch(Calendar calendar) {
-    Calendar baseDate = Calendar.getInstance();
-    Calendar currentDate = Calendar.getInstance();
+    Calendar baseDate = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
+    Calendar currentDate = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
     baseDate.set(1900, Calendar.JANUARY, 31);
     currentDate.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
         calendar.get(Calendar.DAY_OF_MONTH));
