@@ -34,6 +34,15 @@ public class LunarCalendarExtension extends DashClockExtension {
   public static final String PREF_STATUS_NUMBER_OF_LINES = "pref_status_number_of_lines";
   public static final String PREF_NEXT_SPECIAL = "pref_next_special";
   public static final String PREF_LANGUAGE = "pref_language";
+  public static final String PREF_SHORTCUT = "pref_shortcut";
+
+  private static final Intent BUILTIN_CALENDAR_INTENT = new Intent(
+      Intent.makeMainSelectorActivity(Intent.ACTION_MAIN,
+          Intent.CATEGORY_APP_CALENDAR))
+      .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+  private static final Intent ONLINE_CALENDAR_INTENT = new Intent(
+      Intent.ACTION_VIEW,
+      Uri.parse("http://www.baidu.com/s?wd=%E4%B8%87%E5%B9%B4%E5%8E%86"));
 
   private LunarRenderer setupRenderer(SharedPreferences sp) {
     String numStatusLines = sp.getString(PREF_STATUS_NUMBER_OF_LINES, "1");
@@ -66,6 +75,10 @@ public class LunarCalendarExtension extends DashClockExtension {
   @Override
   protected void onUpdateData(int reason) {
     SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+
+    Intent clickIntent = AppChooserPreference.getIntentValue(
+        sp.getString(PREF_SHORTCUT, null), ONLINE_CALENDAR_INTENT);
+
     LunarRenderer renderer = setupRenderer(sp);
     LunarDate date = calendar.transformLunarDate(Calendar.getInstance());
     String status = renderer.getDisplayStatus(date);
@@ -78,17 +91,7 @@ public class LunarCalendarExtension extends DashClockExtension {
     publishUpdate(new ExtensionData().visible(true)
         .icon(R.drawable.ic_extension_lunarcalendar).status(status)
         .expandedTitle(expandTitle).expandedBody(expandBody)
-        .clickIntent(getWebpageIntent()));
-  }
-
-  private Intent getDefaultIntent() {
-    return new Intent(Intent.makeMainSelectorActivity(Intent.ACTION_MAIN,
-        Intent.CATEGORY_APP_CALENDAR)).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-  }
-
-  private Intent getWebpageIntent() {
-    return new Intent(Intent.ACTION_VIEW,
-        Uri.parse("http://www.baidu.com/s?wd=%E4%B8%87%E5%B9%B4%E5%8E%86"));
+        .clickIntent(clickIntent));
   }
 
   private Locale getDisplayLocale(String language) {

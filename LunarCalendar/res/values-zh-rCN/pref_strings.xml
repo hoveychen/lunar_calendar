@@ -21,6 +21,8 @@
     <string name="pref_contact_title">反馈</string>
     <string name="pref_language_title">显示语言</string>
     <string name="pref_language_default_value">cn_traditional</string>
+    <string name="pref_shortcut_title">点击日历内容后打开</string>
+    <string name="pref_shortcut_default_title">在线万年历(百度提供)</string>
 
     <string-array name="pref_language_options">
         <item>中文（中文数字）</item>

@@ -54,6 +54,7 @@ public class LunarCalendarSettingsActivity extends PreferenceActivity {
 
     bindPreferenceSummaryToValue(findPreference(LunarCalendarExtension.PREF_STATUS_NUMBER_OF_LINES));
     bindPreferenceSummaryToValue(findPreference(LunarCalendarExtension.PREF_LANGUAGE));
+    bindPreferenceSummaryToValue(findPreference(LunarCalendarExtension.PREF_SHORTCUT));
 
   }
 
@@ -76,6 +77,9 @@ public class LunarCalendarSettingsActivity extends PreferenceActivity {
         preference.setSummary(index >= 0 ? (listPreference.getEntries()[index])
             .toString().replaceAll("%", "%%") : null);
 
+      } else if (preference instanceof AppChooserPreference) {
+        preference.setSummary(AppChooserPreference.getDisplayValue(
+            preference.getContext(), stringValue));
       } else {
         // For all other preferences, set the summary to the value's
         // simple string representation.

@@ -22,6 +22,8 @@
     <string name="pref_contact_summary">hoveychen@gmail.com</string>
     <string name="pref_language_title">Display Language</string>
     <string name="pref_language_default_value">en</string>
+    <string name="pref_shortcut_title">When click detail, open as</string>
+    <string name="pref_shortcut_default_title">Online Calendar(baidu.com)</string>
 
     <string-array name="pref_language_options">
         <item>Chinese(Traditional number)</item>

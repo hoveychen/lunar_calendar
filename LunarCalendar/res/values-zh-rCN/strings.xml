@@ -19,5 +19,7 @@
     <string name="extension_title">万年历</string>
     <string name="extension_description">显示中国农历时辰。</string>
     <string name="title_settings">万年历设置</string>
+    <string name="title_apps">应用程序</string>
+    <string name="title_shortcuts">快捷方式</string>
 
 </resources>

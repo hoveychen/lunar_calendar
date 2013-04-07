@@ -12,7 +12,8 @@
   limitations under the License.
 -->
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:app="http://schemas.android.com/apk/res/com.eternizedlab.lunarcalendar">
 
     <PreferenceCategory android:title="@string/pref_category_display_title" >
         <ListPreference
@@ -37,6 +38,11 @@
             android:key="pref_next_special"
             android:summary="@string/pref_next_special_summary"
             android:title="@string/pref_next_special_title" />
+
+        <com.eternizedlab.lunarcalendar.AppChooserPreference
+            android:key="pref_shortcut"
+            android:title="@string/pref_shortcut_title"
+            app:allowUseDefault="true" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_category_supprot_title" >
         <Preference
