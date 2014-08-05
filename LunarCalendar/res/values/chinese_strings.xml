@@ -72,7 +72,7 @@
     </string-array>
     <string-array name="cn_zhi_array">
         <item>子</item>
-        <item>醜</item>
+        <item>丑</item>
         <item>寅</item>
         <item>卯</item>
         <item>辰</item>
@@ -106,7 +106,7 @@
         <item>驚蟄</item>
         <item>春分</item>
         <item>清明</item>
-        <item>谷雨</item>
+        <item>穀雨</item>
         <item>立夏</item>
         <item>小滿</item>
         <item>芒種</item>
